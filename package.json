@@ -37,7 +37,21 @@
     "url": "https://github.com/medelm1/vue-image-selector.git"
   },
   "keywords": [
-    "vue3"
+    "vue3",
+    "vue",
+    "vuejs",
+    "image selector",
+    "file uploader",
+    "frontend",
+    "component",
+    "vue component",
+    "yup",
+    "validation",
+    "reactive",
+    "scoped styles",
+    "file input",
+    "image preview",
+    "image upload"
   ],
   "author": "Med Elm",
   "license": "MIT"

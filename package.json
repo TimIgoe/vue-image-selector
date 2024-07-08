@@ -1,6 +1,5 @@
 {
   "name": "@medelm/vue-image-selector",
-  "private": false,
   "version": "1.0.0",
   "type": "module",
   "files": [

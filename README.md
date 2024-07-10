@@ -3,6 +3,8 @@
 [![Vue](https://img.shields.io/badge/Vue-%3E3.x-brightgreen?color=91aac3&labelColor=3FB27F)](https://vuejs.org/)
 ![Yup](https://img.shields.io/badge/yup-1.4.0-blue?logo=yup)
 
+![vue-image-selector-logo](https://github.com/medelm1/vue-image-selector/assets/60750140/b6eb74ef-19c5-4c32-b1e9-8d593939e6d5)
+
 Vue Image Selector is a flexible Vue 3 component and composable for handling image selection, preview, and validation within Vue applications.
 
 ## Installation

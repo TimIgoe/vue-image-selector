@@ -1,5 +1,8 @@
 # Vue Image Selector
 
+[![Vue](https://img.shields.io/badge/Vue-%3E3.x-brightgreen?color=91aac3&labelColor=3FB27F)](https://vuejs.org/)
+![Yup](https://img.shields.io/badge/yup-1.4.0-blue?logo=yup)
+
 Vue Image Selector is a flexible Vue 3 component and composable for handling image selection, preview, and validation within Vue applications.
 
 ## Installation
@@ -22,7 +25,7 @@ Import and use the plugin in your main application file (`main.js` or `main.ts`)
 import { createApp } from 'vue';
 import App from './App.vue';
 import imageSelectorPlugin from '@medelm/vue-image-selector';
-import '@medelm/vue-image-selector/style.css'; // Optional: Import default styles
+import '@medelm/vue-image-selector/style.css';
 
 createApp(App)
   .use(imageSelectorPlugin)
@@ -31,7 +34,7 @@ createApp(App)
 
 __2. Use the Component__
 
-Use the `image-selector` component in your Vue components:
+Use the `ImageSelector` component in your Vue components:
 
 ```html
 <template>
@@ -39,7 +42,7 @@ Use the `image-selector` component in your Vue components:
 </template>
 
 <script setup>
-  import { useImageSelector } from '@medelm/vue-image-selector/composables/useImageSelector';
+  import { useImageSelector } from '@medelm/vue-image-selector';
 
   const imageSelector = useImageSelector();
 

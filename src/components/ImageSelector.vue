@@ -108,10 +108,6 @@ const handleBrowse = () => {
     &:not(.image-selector__selected).drag-over {
         padding: 10px;
         background: #E8F0FE;
-
-        ::after {
-            display: block;
-        }
     }
 
     .image-selector__inner {

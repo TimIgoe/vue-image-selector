@@ -59,18 +59,16 @@ Use the `ImageSelector` component in your Vue components:
 __3. Customization__
 
 - `Styling`: Customize the appearance using scoped CSS or by overriding classes in your project's stylesheets.
-- `Callbacks`: Implement `onChange` and `onReset` callbacks to handle image selection and reset events.
+- `Callbacks`: Implement `onSelect` and `onReset` callbacks to handle image selection and reset events.
 
 __4. Composable API__
 
 The composable `useImageSelector` provides the following methods and reactive state:
 
-- `change(event)`: Handles file input change events.
+- `select(event)`: Handles file input change and drag-and-drop events.
 - `reset()`: Resets the image selection state.
-- `onChange(callback)`: Sets a callback function for when an image is selected.
+- `onSelect(callback)`: Sets a callback function for when an image is selected.
 - `onReset(callback)`: Sets a callback function for when the image selection is reset.
-- `isLoading()`: Checks if the image selector is in a loading state.
-- `setLoading(value)`: Sets the loading state of the image selector.
 - `hasError()`: Checks if there is an error in image selection.
 - `getError()`: Retrieves the error message, if any.
 - `setError(errorMessage)`: Sets a custom error message.

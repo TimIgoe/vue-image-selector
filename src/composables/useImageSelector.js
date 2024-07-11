@@ -5,14 +5,13 @@ export function useImageSelector(customCallbacks = {}) {
 
 	const state = reactive({
 		image: null,
-        loading: false,
         error: null,
         touched: false,
 	});
 
-	// Reactive callbacks for onChange and onReset
+	// Reactive callbacks for onSelect and onReset
     const callbacks = reactive({
-        onChange: customCallbacks.onChange || null,
+        onSelect: customCallbacks.onSelect || null,
         onReset: customCallbacks.onReset || null,
     });
 
@@ -39,9 +38,9 @@ export function useImageSelector(customCallbacks = {}) {
             .label('Image'),
     });
 
-    // Function to set onChange callback
-    function onChange(callback) {
-        callbacks.onChange = callback;
+    // Function to set onSelect callback
+    function onSelect(callback) {
+        callbacks.onSelect = callback;
     }
 
     // Function to set onReset callback
@@ -49,29 +48,36 @@ export function useImageSelector(customCallbacks = {}) {
         callbacks.onReset = callback;
     }
 
-    // Function to handle image change event
-    async function change(event) {
-    	if (event.target.files.length > 0) {
-            try {
-                await imageValidationSchema.validate({ image: event.target.files[0] });
-                state.image = event.target.files[0];
-                state.touched = true;
-                state.error = null;
+    async function select(event) {
+        let file;
 
-                // Call onChange callback if provided
-                if (typeof callbacks.onChange === 'function') {
-                    callbacks.onChange(state.image);
-                }
-            } catch(error) {
-                state.error = error.errors[0];
+        if (event.type === 'change') {
+            file = event.target.files[0];
+        } else if (event.type === 'drop') {
+            file = event.dataTransfer.files[0];
+        }
+
+        if (!file) return;
+
+        try {
+            await imageValidationSchema.validate({ image: file });
+
+            state.image = file;
+            state.touched = true;
+            state.error = null;
+
+            // Call onSelect callback if provided
+            if (typeof callbacks.onSelect === 'function') {
+                callbacks.onSelect(state.image);
             }
+        } catch (error) {
+            state.error = error.errors[0];
         }
     }
 
     // Function to reset image selector state
     function reset() {
         state.image = null;
-        state.loading = false;
         state.error = null;
         state.touched = false;
 
@@ -79,16 +85,6 @@ export function useImageSelector(customCallbacks = {}) {
         if (typeof callbacks.onReset === 'function') {
             callbacks.onReset();
         }
-    }
-
-    // Function to check if image selector is in loading state
-    function isLoading() {
-        return state.loading;
-    }
-
-    // Function to set loading state of image selector
-    function setLoading(value) {
-        state.loading = value;
     }
 
     // Function to check if there is an error in image selection
@@ -108,12 +104,10 @@ export function useImageSelector(customCallbacks = {}) {
 
     // Return public API of the composable
     return {
-    	change,
+    	select,
     	reset,
-    	onChange,
+    	onSelect,
     	onReset,
-    	isLoading,
-    	setLoading,
     	hasError,
     	getError,
     	setError,
